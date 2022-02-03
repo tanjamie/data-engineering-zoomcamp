@@ -14,7 +14,7 @@
 
 ## Pre-Requisites
 ### Install Terraform Client
-
+Download zip from [here](https://www.terraform.io/downloads). Unzip the file and run terraform.exe
 ### Get Started on GCP account 
 The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
 1. Create an account with your Google email ID
