@@ -46,3 +46,10 @@ resource "google_bigquery_dataset" "dataset" {
   project    = var.project
   location   = var.region
 }
+
+// # There will be more such tables for transformed data
+// resource "google_bigquery_table" "table" {
+//  dataset_id = google_bigquery_dataset.dataset.dataset_id
+//  project = var.project
+//  table_id = var.TABLE_NAME
+// }
