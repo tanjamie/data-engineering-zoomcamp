@@ -73,6 +73,10 @@ The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
         - For IAM itself: Search "Identity and Access Management (IAM) API" and click "Enable"
         - For IAM Credentials: Search "IAM Service Account Credentials API" and click "Enable"
 3. Terraform configuration
-    - There are 3 files: `main.tf`, `variables.tf`, `.tfstate` (optional: resources.tf, output.tf)
+    - There are 3 files required in the same directory level: 
+        - `.terraform-version` to indicate version of terraform installed and set to use by default
+        - `main.tf`
+        - `variables.tf`
+        - `.tfstate` (optional: resources.tf, output.tf)
 
 ## Workshop: Setup GCP for Project
