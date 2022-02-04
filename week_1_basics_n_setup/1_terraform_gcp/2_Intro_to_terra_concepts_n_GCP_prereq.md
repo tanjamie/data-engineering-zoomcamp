@@ -14,7 +14,9 @@
 
 ## Pre-Requisites
 ### Install Terraform Client
-Download zip from [here](https://www.terraform.io/downloads). Unzip the file and run terraform.exe (note to self: continue from here ltr)
+Download zip from [here](https://www.terraform.io/downloads). Unzip the file and run terraform.exe. Then add PATH to system environment. The complete steps are illustrated well [here](https://www.radishlogic.com/terraform/how-to-install-terraform-in-windows-11/#Download).
+> **ERROR SOLVER** >> If `terraform.exe` does not run for you, follow the instructions [here](https://www.radishlogic.com/terraform/how-to-install-terraform-in-windows-11/)
+
 ### Get Started on GCP account 
 The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
 1. Create an account with your Google email ID
@@ -52,4 +54,25 @@ The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
         - Option 2: Do `gcloud auth application-default login`
             > **ERROR SOLVER** >> If you get `WARNING: Cannot find a quota project to add to ADC ...`, run `PROJECT_NAME="put_your_project_id_here" then `gcloud auth application-default set-quota-project ${PROJECT_NAME}`
         - To check that authentication is successful, do `gcloud auth list`
+        - You can repeat the above to refresh service account's auth-token if it has expired
+
+## Create Infrastructure for our Project with Terraform
+1. What we need:
+    - Google Cloud Storage (GCS) is a bucket in the GCP environment and can act as Data Lake i.e. storage of raw data in a more organized way
+    - Big Query is the Google-equivalent data warehouse
+2. Add permissions for previously created service account
+    - Add more roles for the user/service (in this case, Terraform) so it has ownership level position, i.e. it can create, update, delete, write, grant others access etc.
+        - Go to IAM & Admin >> IAM >> Click onto the pencil icon for the correct "Principal"
+        - Add predefined "Storage Admin" role to use GCS, but note this only provides permission to the bucket itself
+        - Add predefined "Storage Object Admin" role to grant our service permissions to the objects within the bucket
+        - Add predefined "BigQuery Admin"
+    - In production, a service account is only attached to one service for security and customed role would be assigned instead of the predefined ones
+2. Enable APIs
+    - For this, make sure you are in the right project
+    - The local machine and the cloud do not interact directly with each other, but through the APIs i.e. APIs are the enablers of communication, so we need to enable the respective APIs
+        - For IAM itself: Search "Identity and Access Management (IAM) API" and click "Enable"
+        - For IAM Credentials: Search "IAM Service Account Credentials API" and click "Enable"
+3. Terraform configuration
+    - There are 3 files: `main.tf`, `variables.tf`, `.tfstate` (optional: resources.tf, output.tf)
+
 ## Workshop: Setup GCP for Project
