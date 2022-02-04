@@ -73,10 +73,30 @@ The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
         - For IAM itself: Search "Identity and Access Management (IAM) API" and click "Enable"
         - For IAM Credentials: Search "IAM Service Account Credentials API" and click "Enable"
 3. Terraform configuration
-    - There are 3 files required in the same directory level: 
+    - Files required in the same directory level: 
         - `.terraform-version` to indicate version of terraform installed and set to use by default
-        - `main.tf`
-        - `variables.tf`
-        - `.tfstate` (optional: resources.tf, output.tf)
+        - `main.tf` to specify and configure provider so terraform can tap on it
+        - `variables.tf` declares variables and are generally parsed at runtime
+        - `.tfstate` 
+        - optional: `resources.tf`, `output.tf`
+    - Declarations in main.tf
+        - terraform: configure basic Terraform settings to provision your infrastructure
+            - required_version: minimum Terraform version to apply to your configuration
+            - backend: stores Terraform's "state" snapshots, to map real-world resources to your configuration.
+                - local: stores state file locally as terraform.tfstate
+                - Note - this can be changed to "gcs" or "s3", especially during production
+            - required_providers: specifies the providers required by the current module
+        - provider: adds a set of resource types and/or data sources that Terraform can manage
+            - From the specification here, the Terraform Registry, which is the main directory of publicly available providers from most major infrastructure platforms, allow creation of resources based on the predefined configurations in the directory for the respective provider used. 
+            - In terms of python, this is like importing a library and using the functions within. Think `provider`, `resource` module definitions used in the file as functions encoded from the library i.e. "hashicorp/google" in our case
+        - resource: Is a block to define components of your infrastructure
+            - Project modules/resources: google_storage_bucket, google_bigquery_dataset, google_bigquery_table
+    - variable & locals in variables.tf
+        - runtime arguments and constants
+4. Execution Steps
+    - `terraform init`: Initializes & configures the backend, installs plugins/providers, & checks out an existing configuration from a version control
+    - `terraform plan`: Matches/previews local changes against a remote state, and proposes an Execution Plan.
+    - `terraform apply`: Asks for approval to the proposed plan, and applies changes to cloud
+    - `terraform destroy`: Removes your stack from the Cloud
 
 ## Workshop: Setup GCP for Project
