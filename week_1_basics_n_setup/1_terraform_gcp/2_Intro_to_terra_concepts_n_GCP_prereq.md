@@ -98,5 +98,6 @@ The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
     - `terraform plan`: Matches/previews local changes against a remote state, and proposes an Execution Plan.
     - `terraform apply`: Asks for approval to the proposed plan, and applies changes to cloud
     - `terraform destroy`: Removes your stack from the Cloud
+        - Destroying is essential to not burn credit. The next time, `terraform apply` can be used to resume
 
 ## Workshop: Setup GCP for Project
