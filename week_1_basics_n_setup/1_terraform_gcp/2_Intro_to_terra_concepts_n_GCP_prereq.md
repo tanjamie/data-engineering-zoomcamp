@@ -3,7 +3,7 @@
 ## Terraform Concepts Overview
 ### Introduction: What is Terraform?
 1. Open-source tool by HashiCorp, used for provisioning infrastructure resources e.g. vm, containers, networking resources, using declarative condiguration files
-2. Takes an Infrastructure=as-Code (IaC) approach to build, change and manage infrastructure in a safe, consistent and repeatable way by defining resource configuration that you can version, reuse and share (p.s. like a Git version control, but for infrastructure)
+2. Takes an Infrastructure-as-Code (IaC) approach to build, change and manage infrastructure in a safe, consistent and repeatable way by defining resource configuration that you can version, reuse and share (p.s. like a Git version control, but for infrastructure)
 3. Manages configuration in source control to maintain an ideal provisioning state for testing and production environment
 4. Supports DevOps best practices for change management
 ### Advantages of Terraform
@@ -35,6 +35,21 @@ The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
       - Select "Add Key", "New Key" and select "JSON" before creating
       - The auth-key JSON file pop-up should appear, save the file and take note of its location
 6. Download SDK for local setup
-7. Set environment variable to point to your downloaded GCP auth-keys
-
+    - Google SDK is a CLI tool to interact with the cloud services e.g. list services, authenticate, from your local machine. To check if gcloud is already in your environment, do `gcloud -v`. If you need to install it (for "plain Windows"):
+        - You will need a Linux-like environment e.g. GitBash, MinGW, cygwin
+        - Download SDK in zip [here](https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip) or from the [source](https://cloud.google.com/sdk/docs/downloads-interactive)
+        - Unzip the file and run the `install.sh` script
+        - During installation, you might see `The installation is unable to automatically update your system PATH. Please add C:\tools\google-cloud-sdk\bin`. Adjust your `.bashrc` to include the `PATH` using these [instructions](https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path), or add the `PATH` system-wide like [this](https://gist.github.com/nex3/c395b2f8fd4b02068be37c961301caa7)
+        - Point Google Cloud to the correct Python installation. In Anaconda, do `export CLOUDSDK_PYTHON=~/Anaconda3/python`
+        - To check that it works, again do `gcloud -v`
+8. Set environment variable to point to your downloaded GCP auth-keys
+    - Google Cloud SDK Authentication
+        - Now, we will need the keys we have previously downloaded. Take note of its location, e.g. `C:/Users/Username/.../ny-rides.json'
+        - Check that it is indeed that key we just created using timestamp `ls -ltr C:/Users/Username/.../ny-rides.json`
+        - Set `GOOGLE_APPLICATION_CREDENTIALS` to point to the file using `export GOOGLE_APPLICATION_CREDENTIALS="C:/Users/Username/Use/Your/Own/PATH/ny-rides.json"`
+        - Option 1: Authenticate with `gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS`
+            > **ERROR SOLVER** >> If you encounter `Python was not found ...` (1) Do `python --version` to check that there is python (2) Check environmental path (3) Got to "Start", search for "Manage App Execution Aliases" and turn of those related to python
+        - Option 2: Do `gcloud auth application-default login`
+            > **ERROR SOLVER** >> If you get `WARNING: Cannot find a quota project to add to ADC ...`, run `PROJECT_NAME="put_your_project_id_here" then `gcloud auth application-default set-quota-project ${PROJECT_NAME}`
+        - To check that authentication is successful, do `gcloud auth list`
 ## Workshop: Setup GCP for Project
