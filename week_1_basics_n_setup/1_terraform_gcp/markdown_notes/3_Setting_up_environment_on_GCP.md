@@ -98,6 +98,8 @@
     - Remove zip using `rm terraform_1.1.5_linux_amd64.zip`
 5. Configure Terraform
     - `cd data-engineering-zoomcamp/week_1_basics_n_setup/1_terraform_gcp/terraform` to enter directory
+    - With this, we will need our service account json credentials from GCP. We need to put the json file into this server and this can be done using sftp
+    - Locate your json file
 
 ## Working with VM on Local Machine
 1. Forward Ports on VM onto our Local Machine
