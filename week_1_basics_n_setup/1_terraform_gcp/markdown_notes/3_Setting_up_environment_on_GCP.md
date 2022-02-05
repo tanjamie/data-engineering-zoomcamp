@@ -72,6 +72,7 @@
 1. Use code on original repository
     - Clone the original repository into the vm with `git clone https://github.com/DataTalksClub/data-engineering-zoomcamp.git`
     - `cd data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql` to enter directory
+    - Optional: If port 5432 failed to connect when tested locally because it has been occupied, change the port here too (it will save you trouble later when forwarding port in vm onto local machine) 
     - Run docker-compose with `docker-compose up -d` and use `docker ps` to check that it has run successfully
 2. Configure VSCode to access vm locally
     - Go into VScode, install Remote - SSH extension
@@ -89,4 +90,9 @@
         - Then run `pip install -U mycli`
         - Now, `pgcli -h localhost -U root -d ny_taxi` should work. You may receive a warning about storing passwords, that's okay
 
-## Forward port to Local Machine
+## Working with VM on Local Machine
+1. Forward Ports on VM onto our Local Machine
+    - Enter VScode, ctrl + tilda to get terminal, and go to PORTS tab
+    - Enter Git Bash terminal, do `docker ps` to check the port at which Postgres is running on
+    - Enter the Port number into VScode
+    - Here on, you can access Postgresql without SSH. Just run `pgcli -h localhost -U root -d ny_taxi` on a new Git Bash terminal
