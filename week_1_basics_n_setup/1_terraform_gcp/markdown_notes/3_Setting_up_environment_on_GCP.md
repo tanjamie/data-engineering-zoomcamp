@@ -68,7 +68,7 @@
         - ctrl + o to save, and ctrl + x to exit
         - Run `source .bashrc` 
         - Use `which docker-compose` and `docker-compose version` to check that the path has been added successfully
-### VSCode & PGCLI
+### VSCode, PGCLI & Terraform
 1. Use code on original repository
     - Clone the original repository into the vm with `git clone https://github.com/DataTalksClub/data-engineering-zoomcamp.git`
     - `cd data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql` to enter directory
@@ -89,10 +89,31 @@
         - Do `conda install -c conda-forge pgcli` which downloads the compiled version needed
         - Then run `pip install -U mycli`
         - Now, `pgcli -h localhost -U root -d ny_taxi` should work. You may receive a warning about storing passwords, that's okay
+4. Download Terraform
+    - From the Terraform [website](https://www.terraform.io/downloads), scroll down and copy the link to download Linux Binary which is compatible with your device e.g. [Amd64](https://releases.hashicorp.com/terraform/1.1.5/terraform_1.1.5_linux_amd64.zip)
+    - Go to the bin directory and run `wget https://releases.hashicorp.com/terraform/1.1.5/terraform_1.1.5_linux_amd64.zip`
+    - Check that download was successful with `ls`
+    - Do `sudo apt-get install unzip` then `unzip terraform_1.1.5_linux_amd64.zip` to unzip file
+    - Check unzipping is successful using `terraform -version`
+    - Remove zip using `rm terraform_1.1.5_linux_amd64.zip`
+5. Configure Terraform
+    - `cd data-engineering-zoomcamp/week_1_basics_n_setup/1_terraform_gcp/terraform` to enter directory
 
 ## Working with VM on Local Machine
 1. Forward Ports on VM onto our Local Machine
     - Enter VScode, ctrl + tilda to get terminal, and go to PORTS tab
     - Enter Git Bash terminal, do `docker ps` to check the port at which Postgres is running on
     - Enter the Port number into VScode
-    - Here on, you can access Postgresql without SSH. Just run `pgcli -h localhost -U root -d ny_taxi` on a new Git Bash terminal
+    - Here on, you can access Postgresql without SSH. Just run `pgcli -h localhost -U root -d ny_taxi` on a new Git Bash terminal and you should be able to `/dt` successfully in the Postgresql
+        > **ERROR SOLVER** >> If pgcli hangs indefinately on Git Bash, check that you have used the correct ports. Note if you are using 5431, you will need add `-p 5431` into the command because it takes port 5432 by default i.e. `pgcli -h localhost -p 5431 -U root -d ny_taxi`. If this doesn't work, consider running this on Anaconda Prompt
+    - The same thing can be done for port 8080 in VScode, and access them from browser on our local machine
+2. Download data on vm using `wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv`
+3. Start a Jupyter notebook in VM
+    - `cd data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql` into the appropriate directory where jupyter file upload-data.ipynb is located
+    - Run `jupyter notebook`
+    - Forward the port used using VScode
+    - Copy the link provided and search it on your browser to access the jupyter notebook
+    - Run cells in Jupyter notebook to insert data into Postgres on vm, in chunks
+        - Update port when creating machine if you are using a different one
+        - Enter Postgresql using pgcli to check
+
