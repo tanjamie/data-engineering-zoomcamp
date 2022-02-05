@@ -73,7 +73,7 @@ The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
         - For IAM itself: Search "Identity and Access Management (IAM) API" and click "Enable"
         - For IAM Credentials: Search "IAM Service Account Credentials API" and click "Enable"
 3. Terraform configuration
-    - Files required in the same directory level: 
+    - Create a `terraform` directory and make fles required in the same directory level: 
         - `.terraform-version` to indicate version of terraform installed and set to use by default
         - `main.tf` to specify and configure provider so terraform can tap on it
         - `variables.tf` declares variables and are generally parsed at runtime
@@ -94,10 +94,15 @@ The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
     - variable & locals in variables.tf
         - runtime arguments and constants
 4. Execution Steps
-    - `terraform init`: Initializes & configures the backend, installs plugins/providers, & checks out an existing configuration from a version control
-    - `terraform plan`: Matches/previews local changes against a remote state, and proposes an Execution Plan.
-    - `terraform apply`: Asks for approval to the proposed plan, and applies changes to cloud
-    - `terraform destroy`: Removes your stack from the Cloud
-        - Destroying is essential to not burn credit. The next time, `terraform apply` can be used to resume
+    - `cd` into the terraform directory, then execute `terraform init`, `terraform plan` then `terraform apply`
+    - You will be prompted to enter a value, enter your project ID. Recall in ariable.tf, variable project doesn't havea default value, so we need to enter a value here
+    - After successfully executing, you should see a new bucket at BigQuery and Cloud Storage
+    - All important terraform commands:
+        - `terraform init`: Initializes & configures the backend, installs plugins/providers, & checks out an existing configuration from a version control
+            - Expect new files to be created e.g. `.terraform/` which acts like a package manager which stores package in a more compressed form in the terraform directory so it knows how to deploy
+        - `terraform plan`: Matches/previews local changes against a remote state, and proposes an Execution Plan.
+        - `terraform apply`: Asks for approval to the proposed plan, and applies changes to cloud
+        - `terraform destroy`: Removes your stack from the Cloud
+            - Destroying is essential to not burn credit. The next time, `terraform apply` can be used to resume
 
-## Workshop: Setup GCP for Project
+fin
