@@ -105,4 +105,4 @@ The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
         - `terraform destroy`: Removes your stack from the Cloud
             - Destroying is essential to not burn credit. The next time, `terraform apply` can be used to resume
 
-fin
+*fin*
