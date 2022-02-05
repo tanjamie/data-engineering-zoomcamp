@@ -41,7 +41,7 @@ The course uses GCP free version (up to EUR 300 credits with 90 days lifecycle):
         - You will need a Linux-like environment e.g. GitBash, MinGW, cygwin
         - Download SDK in zip [here](https://dl.google.com/dl/cloudsdk/channels/rapid/google-cloud-sdk.zip) or from the [source](https://cloud.google.com/sdk/docs/downloads-interactive)
         - Unzip the file and run the `install.sh` script
-        - During installation, you might see `The installation is unable to automatically update your system PATH. Please add `C:\tools\google-cloud-sdk\bin`. Adjust your `.bashrc` to include the `PATH` using these [instructions](https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path), or add the `PATH` system-wide like [this](https://gist.github.com/nex3/c395b2f8fd4b02068be37c961301caa7)
+        - During installation, you might see `The installation is unable to automatically update your system PATH.` Please add `C:\tools\google-cloud-sdk\bin`. Adjust your `.bashrc` to include the `PATH` using these [instructions](https://unix.stackexchange.com/questions/26047/how-to-correctly-add-a-path-to-path), or add the `PATH` system-wide like [this](https://gist.github.com/nex3/c395b2f8fd4b02068be37c961301caa7)
         - Point Google Cloud to the correct Python installation. In Anaconda, do `export CLOUDSDK_PYTHON=~/Anaconda3/python`
         - To check that it works, again do `gcloud -v`
 8. Set environment variable to point to your downloaded GCP auth-keys
