@@ -25,7 +25,7 @@
 
 ## Airflow Setup
 1. Create a sub-directory called `airflow` in your project directory
-2. Import the official image and setup the latest Airflow version with `curl -LfO 'https://airflow.apache.org/docs/apache-airflow/stable/docker-compose.yaml`
+2. Import the official image and setup the latest Airflow version with `curl -LfO 'https://airflow.apache.org/docs/apache-airflow/stable/docker-compose.yaml'`
 3. It cloud be overwhelming to see a lot of services in here. But this is only a quick-start template, and as you proceed you'll figure out which unused servicescan be removed
 4. Set the Airflow user 
     - On Linux, the quick-start needs to know your host user-id and needs to have group id set to 0. Otherwise, the file created in "dags", "logs" and "plugins' will be created with root user. You have to make sure to configure them for the docker-compose:
