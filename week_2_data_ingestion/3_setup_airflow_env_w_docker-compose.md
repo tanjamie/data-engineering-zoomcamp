@@ -15,11 +15,11 @@
     - Airflow init service >> Initialization service (customed to the workshop's design) which initializes configuration such as backend, user credentials, environment variables etc.
 
 ## Pre-requisites to Setup the Environment
-1. To standardize across the project's config, rename the service account keys that you created from previous week i.e. `ny-rides.json` to `google_credentials.json` and store it on `$HOME` directory
-  ```
-  cd ~ && mkdir -p ~/.google/credentials/
-  mv <path/to/your/service-account-authkeys>.json ~/.google/credentials/google_credentials/json
-  ```
+1. To standardize across the project's config, rename the service account keys that you created from previous week i.e. `ny-rides.json` to `google_credentials.json` and store it on `$HOME` directory using the following code:
+      ```
+      cd ~ && mkdir -p ~/.google/credentials/
+      mv <path/to/your/service-account-authkeys>.json ~/.google/credentials/google_credentials/json
+      ```
 2. You may need to upgrade your docker-compose version to v2.x+, and set the memory for your Docker Engine to minimum 5GB (ideally 8GB). If insufficient memory is allocated, it might cause airflow-webserver to continuously restart.
     - Go to Docker Desktop setting "preferences", enter "resources" and edit "memory"
 
@@ -28,3 +28,6 @@
 2. Import the official image and setup the latest Airflow version with `curl -LfO 'https://airflow.apache.org/docs/apache-airflow/stable/docker-compose.yaml`
 3. It cloud be overwhelming to see a lot of services in here. But this is only a quick-start template, and as you proceed you'll figure out which unused servicescan be removed
 4. Set the Airflow user 
+    - On Linux, the quick-start needs to know your host user-id and needs to have group id set to 0. Otherwise, the file created in "dags", "logs" and "plugins' will be created with root user. You have to make sure to configure them for the docker-compose:
+        ```
+        mkdir -p ./dags
