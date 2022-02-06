@@ -97,10 +97,20 @@
     - Check unzipping is successful using `terraform -version`
     - Remove zip using `rm terraform_1.1.5_linux_amd64.zip`
 5. Configure Terraform
-    - `cd data-engineering-zoomcamp/week_1_basics_n_setup/1_terraform_gcp/terraform` to enter directory
-    - With this, we will need our service account json credentials from GCP. We need to put the json file into this server and this can be done using sftp
-    - Locate your json file
-
+    - Put Credentials into VM
+        - `cd data-engineering-zoomcamp/week_1_basics_n_setup/1_terraform_gcp/terraform` to enter directory
+        - With this, we will need our service account json credentials from GCP ie.e we need to put the json file into this server, and this can be done using sftp. But first, find the location of your json file and `cd` into the directory
+        - `sftp de-zoomcamp` adn `ls` to see files in vm
+        - Do `mkdir .gc` and `cd` into it
+        - `put ny-rides.json` to put the file into the vm current directory
+    - Configure Google CLI
+        - Enter terraform directory with `cd data-engineering-zoomcamp/week_1_basics_n_setup/1_terraform_gcp/terraform`
+        - Set up Google application credentials environmental variables with `export GOOGLE_APPLICATION_CREDENTIALS=~/.gc/ny-rides.json`
+        - `gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS` to authenticate
+    - Set up Terraform
+        - `terraform init`
+        - `terraform plan`
+        - `terraform apply`
 ## Working with VM on Local Machine
 1. Forward Ports on VM onto our Local Machine
     - Enter VScode, ctrl + tilda to get terminal, and go to PORTS tab
@@ -109,7 +119,7 @@
     - Here on, you can access Postgresql without SSH. Just run `pgcli -h localhost -U root -d ny_taxi` on a new Git Bash terminal and you should be able to `/dt` successfully in the Postgresql
         > **ERROR SOLVER** >> If pgcli hangs indefinately on Git Bash, check that you have used the correct ports. Note if you are using 5431, you will need add `-p 5431` into the command because it takes port 5432 by default i.e. `pgcli -h localhost -p 5431 -U root -d ny_taxi`. If this doesn't work, consider running this on Anaconda Prompt
     - The same thing can be done for port 8080 in VScode, and access them from browser on our local machine
-2. Download data on vm using `wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv`
+2. Download data on vm using `wget https://s3.amazonaws.com/nyc-tlc/trip+data/yellow_tripdata_2021-01.csv` at the appropriate directory
 3. Start a Jupyter notebook in VM
     - `cd data-engineering-zoomcamp/week_1_basics_n_setup/2_docker_sql` into the appropriate directory where jupyter file upload-data.ipynb is located
     - Run `jupyter notebook`
