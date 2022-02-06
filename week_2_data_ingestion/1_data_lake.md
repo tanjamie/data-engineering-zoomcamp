@@ -1,14 +1,14 @@
 # Introduction to Data Lake
 ## What is Data Lake?
-    - Central repository that holds big data form many sources
-        - Data stored can be structured, semi structured or unstructured
-    - Its purpose is to ingest as much data and as quickly as possible, then make it available and accessible to multiple users
-        - Generally associate with somr sort of metadata for faster access
-    - Extensively used in machine learning and analytical solutions
-    - Features of a data lake solution: 
-        - Secure
-        - Scalable
-        - Hardware should be inexpensive
+- Central repository that holds big data form many sources
+    - Data stored can be structured, semi structured or unstructured
+- Its purpose is to ingest as much data and as quickly as possible, then make it available and accessible to multiple users
+    - Generally associate with somr sort of metadata for faster access
+- Extensively used in machine learning and analytical solutions
+- Features of a data lake solution: 
+    - Secure
+    - Scalable
+    - Hardware should be inexpensive
 
 ## Data Lake VS Data Warehouse
 ### Data Lake
