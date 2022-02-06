@@ -1,5 +1,4 @@
 week_1_basics_n_setup/1_terraform_gcp/ny-rides.json
-
-.ipynb_checkpoints/
-ny_taxi_postgres_data/
-*.csv
+week_1_basics_n_setup/2_docker_sql/ipynb_checkpoints/
+week_1_basics_n_setup/2_docker_sql/ny_taxi_postgres_data/
+week_1_basics_n_setup/2_docker_sql/*.csv
