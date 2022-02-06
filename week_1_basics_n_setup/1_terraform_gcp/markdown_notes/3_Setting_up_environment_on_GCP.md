@@ -128,8 +128,14 @@
     - Run cells in Jupyter notebook to insert data into Postgres on vm, in chunks
         - Update port when creating machine if you are using a different one
         - Enter Postgresql using pgcli to check
-## Shut Down VM
-1. Option 1: Go into GCP Console where the VM instances are at, under action, select "Stop". This freezes the machine and should not incur extra cost, outside of the storage space used 
-2. Option 2: From the terminal, do `sudo shutdown now`
+## Shut Down & Resume VM
+1. Shut down
+    - Option 1: Go into GCP Console where the VM instances are at, under action, select "Stop". This freezes the machine and should not incur extra cost, outside of the storage space used 
+    - Option 2: From the terminal, do `sudo shutdown now`
+2. Resume or Restart
+    - On GCP where the vm instances are at, under action, select "Start"
+    - Copy the new external ip address provided
+    - Edit ssh config file with `nano .ssh/config` then replace the HostName with the new external ip
+    - Do `ssh de-zoomcamp` to enter vm
 
 *fin*
