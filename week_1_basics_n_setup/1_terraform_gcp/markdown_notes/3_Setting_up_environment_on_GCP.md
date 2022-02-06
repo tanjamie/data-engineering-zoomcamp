@@ -110,7 +110,7 @@
     - Set up Terraform
         - `terraform init`
         - `terraform plan`
-        - `terraform apply`
+        - `terraform apply`, this will complain because if you've followed the tutorials so far, you would have had the bucket already on GCP but the state file is on this server
 ## Working with VM on Local Machine
 1. Forward Ports on VM onto our Local Machine
     - Enter VScode, ctrl + tilda to get terminal, and go to PORTS tab
@@ -128,4 +128,8 @@
     - Run cells in Jupyter notebook to insert data into Postgres on vm, in chunks
         - Update port when creating machine if you are using a different one
         - Enter Postgresql using pgcli to check
+## Shut Down VM
+1. Option 1: Go into GCP Console where the VM instances are at, under action, select "Stop". This freezes the machine and should not incur extra cost, outside of the storage space used 
+2. Option 2: From the terminal, do `sudo shutdown now`
 
+*fin*
