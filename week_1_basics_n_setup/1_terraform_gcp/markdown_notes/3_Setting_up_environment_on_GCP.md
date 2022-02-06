@@ -130,7 +130,7 @@
         - Enter Postgresql using pgcli to check
 ## Shut Down & Resume VM
 1. Shut down
-    - Option 1: Go into GCP Console where the VM instances are at, under action, select "Stop". This freezes the machine and should not incur extra cost, outside of the storage space used 
+    - Option 1: Go into GCP Console where the VM instances are at, under action, select "Stop". This freezes the machine and should not be charged for the machine, but you might incur a small cost for storage (storing the state of vm) 
     - Option 2: From the terminal, do `sudo shutdown now`
 2. Resume or Restart
     - On GCP where the vm instances are at, under action, select "Start"
