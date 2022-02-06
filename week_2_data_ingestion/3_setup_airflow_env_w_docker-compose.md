@@ -15,7 +15,7 @@
     - Airflow init service >> Initialization service (customed to the workshop's design) which initializes configuration such as backend, user credentials, environment variables etc.
 
 ## Pre-requisites to Setup the Environment
-1. To standardize across the project's config, rename the service account keys that you created from previous week i.e. `ny-rides.json` to `google_credentials.json` and store it on `$HOME` directory using the following code:
+1. To standardize across the project's config, rename the service account keys that you created from previous week i.e. `ny-rides.json` to `google_credentials.json` and store it on `$HOME` directory (on local machine) using the following code:
       ```
       cd ~ && mkdir -p ~/.google/credentials/
       mv <path/to/your/service-account-authkeys>.json ~/.google/credentials/google_credentials/json
